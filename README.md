@@ -153,7 +153,6 @@ This is true for ABAP Push Channels (APC)—not ABAP Message Channels. ABAP Mess
 >> Development Packages and Transport Organizer
 > Key Concepts Refresher
 > ABAP Workbench
-
 > Repository Browser
 > Repository Information System
 > Workbench Settings
@@ -168,7 +167,86 @@ This is true for ABAP Push Channels (APC)—not ABAP Message Channels. ABAP Mess
 > Refresher
 > Summary
 ### ABAP Debugger Program Usage
+> Various ways to start the debugger
+> Breakpoints
+> Watchpoints
+> Assertions
+> Viewing and modifying data objects
+> Understanding the architecture of the debugger
+> Key Concepts Refresher
+>> New and Classic Debugger
+>>> SYSTEM -> UTILITIES -> DEBUG ABAP or SYSTEM -> UTILITIES -> DEBUG SCREEN
+>>> shortcut: /h and press ENTER
+>>> Execute debugging 
+>>> Select desired line AND select SET/DELETE breakpoint 
+>> New Debugger Tools and UI
+>> Assertions and Breakpoints
+>> New Debugger Customization and Settings
+>>> SY-SUBRC: system variable containing the statement return code
+>>> SY-TABIX: system varible containing the internal table row last accessed
+>>> SY-DATUM: show system current date
+>>> SY-UZEIT: show system current time
+>>> SY_UNAME: show userID of current user
 ### ABAP Types and Data Objects
+> Objectives
+>> Data types and data objects
+>> Predefined and generic data types
+>> Valid operations on the various data objects and their usage in programs
+>> Local data types and the global data types
+>> Structure declarations and the differences between flat, nested and deep structures
+> Key concepts refresher
+```
+difference betweeen predefined and generic data types and their usage within the program
+syntax of the data declaration
+valid operations of the data objects
+```
+## ABAP Types and Data Objects
+>>> Data types 
+>>>> Data types are used for the definition of data objects - define technical attributes of data objects - define how data stored in memory - operations are possible on the data objects based on the data type - used for definition of interface parameters - used for input output field  in the ABAP programs - used to declare PARAMETERS and SELECT-OPTIONS for program selection screens and dynpro screen fields 
+>>>>> Data types 
+>>>>>> Predefined data types
+>>>>>> Local data types 
+>>>>>> Global data types
+>>>>>>> ABAP dictionary objects
+>>>>>>> ABAP dictionary type group
+>>>>> Data objects 
+>>>>>> Data objects are temporary storage in the program and occupy memory to store data.
+>>>>>>> Literals - unnamed data objects with fixed values
+>>>>>>>> Numeric literals - sequence of digits that contain a plus or minus sign - value ranges from -2^31+1 to 2^31-1 - WRITE: 12345.
+---
+>>>>>>>> Text field literals - sequence of cahracters in inverted commas - value ranges from 1 to 255 characters in length - WRITE: 'A text literal'.
+---
+>>>>>>>> String literals - sequence of characters enclosed with back quotes - WRITE: `A STRING literal`
+---
+>>>>>>> Constants - named data objects with fixed values and defined statically using a declarative statement - CONSTANTS: c_nump TYPE P DECIMALS 3 VALUE '123.657'. c_city TYPE C LENGTH 10 VALUE 'BERLIN'
+---
+>>>>>>> Text Symbols - TEXT-XXX, where XXX is the text ID  for the text symbol maintained in the text pool - WRITE text-001. WRITE 'THIS is an English text'(002). - SE11 -> syst
+---
+>>>>>>> Predefined data objects - ABAP dictionary - SYST
+---
+>>>>>>> Variables - data objects - allows to store data locally for the program in memory
+---
+>>>>>>>> DATA keyword - declare data - DATA: count type I, count2 TYPE I value 10. - DATA: itab TYPE STANDARD TABLE OF mara. SELECT matnr bismt FROM mara INTO CORRESPONDING FIELDS OF TABLE itab WHERE mtart EQ 'FERT'. LOOP AT itab INTO DATA(wa). WRITE:/ wa-matnr, wa-bismt. ENDLOOP. READ TABLE itab WITH KEY matnr = '1400-500' INTO DATA(wa2). - DATA: itab TYPE STANDARD TABLE OF mara. LOOP AT itab ASSIGNING FIELD-SYMBOL(<line>). WRITE:/ <line>-matnr, <line>-bismt. ENDLOOP. READ TABLE itab WITH KEY matnr ='ABC' ASSIGNING FIELD-SYMBOL(<line2>). - oref->meth( IMPORTING p1 = DATA(a1)IMPORTING p2 = DATA(a2)... ).
+---
+>>>>>>>> STATICS - declare the data with the static validity within the procedure - { REPORT DEMO_STATIC_DATA_OBJECT. DO 5 TIMES. PERFORM dataobject_example. ENDDO. FORM dataobject_example. DATA count1 TYPE I. STATICS count2 TYPE I. count1 = count1 + 1. count2 = count2 + 1. WRITE: / 'Count1: ', count1, 'Count2: ', count2. ENDFORM. : Count1: 1 Count2: 1 Count1: 1 Count2: 2 Count1: 1 Count2: 3 Count1: 1 Count2: 4 Count1: 1 Count2: 5}
+---
+>>>>>>>> CLASS-DATA: declare a static attribute for the class - is valid for all instances  of the class within the program
+---
+>>>>>>>> PARAMETERS: declare an elementary data object - displayed as input field on the selection screen
+---
+>>>>>>>> SELECT-OPTIONS: declare an internal table - displayed as input field on selection screen 
+## ABAP Data types - predefined data types provided by the ABAP runtime environment
+>>> Four character types - Numeric types (N), character text(C), data type(D), time type(T) - each character occupies 2 to 4 bytes
+>>> Three numeric types - Integer (I), Floating point numbers(F), packed number(P) - used to display and calculate numbers
+>>> Integer type - whole number - DATA: num1 TYPE I value 5. num2 TYPE I VALUE 2. Result TYPE I. Result = num1 / num2.
+>>> STRING - variable-length character string 
+>>> XSTRING - variable-length hexadecimal byte sequence ::: {TYPES: , DATA: }
+## Local Data types - present inside ABAP program and are visible to the program only 
+>> TYPES: <type_name> ... [TYPE <ABAP-Type> |   LIKE <obj>].
+>> TYPES: BEGIN OF Address_ty. firstname TYPE C LENGTH 20 lastname TYPE C LENGTH 20. street  TYPE C LENGTH 20. city TYPE C LENGTH 20. END OF address_ty.
+>> DATA: addrs TYPE address_ty. addrs-firstname = 'Bob', addrs-lastname = 'Johnson' addrs-street = '123 Adam Lane'. WRITE: addrs-firstname, addrs-lastname, addrs-street.
+>> TYPES: BEGIN OF stru1, fld1 TYPE I, BEGIN OF stru2, fld2 TYPE C, fld3 TYPE I, END OF stru2, END of stru1
+>> TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
 ### Internal Table Definition and Use
 ### SQL Statements Including Update Strategies
 ### Basic ABAP Programs and Interface Creation
