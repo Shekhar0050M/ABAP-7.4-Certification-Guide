@@ -202,7 +202,19 @@ valid operations of the data objects
 > Types of tables - Standard tables, Sorted tables, Hashed tables, Indexed, Not specified
 > Table key is pimary key - primary_key
 > Components of primary key declared using - UNIQUE, NON-UNIQUE KEY, specified
+> Move-corresponding statements is used to move the identical rows from internal table from itab1 to itab2  
+> COLLECT keyword is used to populate an internal table 
 ### SQL Statements Including Update Strategies
+> Data Modelling - implement appropriate table definitions, including their relationships with each other in ABAP Dicitionary
+> Data Retrieval - SAP provides openSQL - openSQL statements are dynamically converted to corresponding native sql - independent of database
+>> Types of reuse components encapsulate databse access: Logical databases, Function modules, BAPIs, Method of global classes
+![alt text](images/SAP%20LUW%20within%20a%20Database%20LUW.png)
+![alt text](images/Locking%20Data%20through%20Database%20LUWs.png)
+> Lock modes
+>> E - Extensible - lock for data change - accumulative
+>> X - Exclusive - lock for data change - exclusive
+>> S - Shared - locked for protective data display - shared lock
+![alt text](images/Process%20Flow%20of%20an%20Update.png)
 ### Basic ABAP Programs and Interface Creation
 ### ABAP Dictionary
 ### Unicode
