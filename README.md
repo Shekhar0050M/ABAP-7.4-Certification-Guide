@@ -350,64 +350,62 @@ TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
 - SY-TABIX - find the current line in the internal table 
 - SY-INDEX - gives the number of loop passes - E.G. in DO loop
 ```
-*&---------------------------------------------------------------------*
-*& Report  ZSHEKHAR01
-*&
-*&---------------------------------------------------------------------*
-*&
-*&
-*&---------------------------------------------------------------------*
 REPORT ZSHEKHAR01.
-
-""""""""""""""""""""""""""
+```
+```
 WRITE:12345.
+```
+```
 WRITE: 'A text literal'.
+```
+```
 WRITE: `A STRING literal`.
-
-"""""""""""""""""""""""""
+```
+```
 CONSTANTS: c_nump TYPE P DECIMALS 3 VALUE '123.657',
            c_city TYPE C LENGTH 10 VALUE 'BERLIN'.
-
-"""""""""""""""""""""""""
+```
+```
 WRITE text-001.
 WRITE 'THIS is an English text'(002).
-
-"""""""""""""""""""""""""
+```
+```
 DATA: count TYPE I,
       count2 TYPE I VALUE 10.
-
-"""""""""""""""""""""""""
+```
+```
 "Declaration of field symbols
-" DATA: itab TYPE STANDARD TABLE OF mara.
+DATA: itab TYPE STANDARD TABLE OF mara.
 
-" SELECT matnr bismt FROM mara
-"     INTO CORRESPONDING FIELDS OF TABLE itab
-"                                  WHERE mtart EQ 'FERT'.
+SELECT matnr bismt FROM mara
+       INTO CORRESPONDING FIELDS OF TABLE itab
+       WHERE mtart EQ 'FERT'.
 
-" LOOP AT itab INTO DATA(wa).
-"     WRITE:/ wa-matnr, wa-bismt.
-" ENDLOOP.
+LOOP AT itab INTO DATA(wa).
+     WRITE:/ wa-matnr, wa-bismt.
+ENDLOOP.
 
-" READ TABLE itab WITH KEY matnr = '1400-500' INTO  DATA(wa2).
-
-"""""""""""""""""""""""""
+READ TABLE itab WITH KEY matnr = '1400-500' INTO  DATA(wa2).
+```
+```
 "Declaration of actual parameters
-" DATA: itab TYPE STANDARD TABLE OF mara.
+DATA: itab TYPE STANDARD TABLE OF mara.
 
-" LOOP AT itab ASSIGNING FIELD-SYMBOL(<line>)
-"     WRITE:/ <line>-matnr, <line>-bismt.
-" ENDLOOP.
+LOOP AT itab ASSIGNING FIELD-SYMBOL(<line>)
+     WRITE:/ <line>-matnr, <line>-bismt.
+ENDLOOP.
 
-" READ TABLE itab WITH KEY matnr = 'ABC'
-"                          ASSIGNING FIELD-SYMBOL(<line2>).
+READ TABLE itab WITH KEY matnr = 'ABC'
+     ASSIGNING FIELD-SYMBOL(<line2>).
+```
 
-"""""""""""""""""""""""""
+```
 "Declaration of Table Work Area
-" oref->meth( IMPORTING p1 = DATA(a1)
-"         IMPORTING p2 = DATA(a2)
-" ...).
-
-"""""""""""""""""""""""""
+oref->meth( IMPORTING p1 = DATA(a1)
+      IMPORTING p2 = DATA(a2)
+...).
+```
+```
 "STATISTICS keyword
 DO 5 TIMES.
   PERFORM dataobject_example.
@@ -419,8 +417,8 @@ count1 = count1 + 1.
 count2 = count2 + 1.
 WRITE:/ 'Count1: ', count1, 'Count2: ', count2.
 ENDFORM.
-
-"""""""""""""""""""""""""
+```
+```
 "Usage of Data Keyword
 DATA: var1 TYPE I.
 DATA: var2 LIKE var1.
@@ -428,324 +426,34 @@ DATA: var3  TYPE STRING VALUE 'Hello'.
 DATA: num1 TYPE I VALUE 5,
       num2 TYPE I VALUE 2,
       RESULT TYPE I.
-"     RESULT = num1 / num2.
-DATA: pack_num1 TYPE P LENGTH 8 DECIMALS 2,
-      pack_num2 TYPE P LENGTH 8 DECIMALS 2 VALUE '2.55'.
-DATA: dec_num1 TYPE decfloat16,
-      dec_num2 TYPE decfloat34.
-DATA: hex(1) TYPE X VALUE '09'.
-
-"Syntax to declare incompete data types
-"DATA var1 TYPE C.         "character variable of length 1
-"DATA: var2(3) TYPE C.         "character variable of length 3
-"DATA: var3 TYPE C LENGTH 3.         "character variable of length 3
-
-"Syntax for data types and data objects
-TYPES: v_char1(2) TYPE C.
-TYPES: v_char2 TYPE C LENGTH 10.
-TYPES: num1 TYPE P DECIMALS 2.
-DATA: name(20) TYPE C.
-DATA: price TYPE P DECIMALS 2.
-
-"""""""""""""""""""""""""
-"TYPES: <type_name> ... [TYPE <ABAP-Type> | LIKE <obj> ].
-"TYPES: char1 TYPE C LENGTH 8,
-"       num1 TYPE N LENGTH 6,
-"       pack1 TYPE P LENGTH 3 DECIMALS 2.
-
-"Define the structure data type in an ABAP program
-TYPES: BEGIN OF address_ty,
-             firstname TYPE C LENGTH 20,
-             lastname TYPE C LENGTH 20,
-             street TYPE C LENGTH 30,
-             city TYPE C LENGTH 20,
-       END OF address_ty.
-
-"Access individual components of the structure data  type in the program
-"DATA: addrs TYPE address_ty,
-"      addrs-firstname = 'Bob',
-"      addrs-lastname = 'Johnson',
-"      addrs-street = '123 Adam Lane'.
-"WRITE: addrs-firstname, addrs-lastname, addrs-street.
-
-
-"Define a nested structure type locally in an ABAP program
-TYPES: BEGIN OF stru1,
-          fldl TYPE I,
-          BEGIN OF stru2,
-             fld2 TYPE C,
-             fld3 TYPE I,
-          END of stru2,
-       END OF stru1.
-
-TYPES: BEGIN of addr1,
-          street_no TYPE C LENGTH 30,
-          city TYPE C LENGTH 20,
-          state TYPE C LENGTH 30,
-          country TYPE C LENGTH 20,
-       END OF addr1.
-
-TYPES: BEGIN OF contact_det,
-          firstname TYPE C LENGTH 20,
-          lastname TYPE C LENGTH 20,
-          address TYPE addr1,
-          phoneno TYPE C LENGTH 15,
-       END OF contact_det.
-
-"Syntax to create a table type
-"TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
-TYPES: BEGIN OF flightinfo,
-          carrid TYPE s_carr_id,
-          carrname TYPE s_carrname,
-          connid TYPE s_conn_id,
-          fldate TYPE SY-DATUM,
-          fltime TYPE s_fltime,
-       END OF flightinfo.
-
-TYPES: itab TYPE SORTED TABLE OF flightinfo
-            WITH UNIQUE KEY carrid.
-
-"Syntax for MESH Declaration
-TYPES:
-      BEGIN OF line1,
-        col1 TYPE I,
-      END OF line1,
-      t_itab1 TYPE SORTED TABLE OF line1
-                   WITH NON-UNIQUE KEY col1,
-      BEGIN OF line2,
-        col1 TYPE I,
-        col2 TYPE I,
-      END OF line2,
-      t_itab2 TYPE SORTED TABLE OF line2
-                   WITH NON-UNIQUE KEY col1 col2,
-      BEGIN OF MESH t_mesh,
-         snode1 TYPE t_itab1
-            ASSOCIATION to_node2 TO snode2 ON col1 = col1,
-         snode2 TYPE t_itab2,
-      END OF MESH t_mesh.
-
-"Line Type Definition for Internal Table
-TYPES: BEGIN OF mat_type,
-          material TYPE matnr,
-          plant TYPE werks_d,
-          qty TYPE P DECIMALS 2,
-       END OF mat_type.
-
-"Standard table type definition with refernce to line type
-TYPES: itab_type TYPE STANDARD TABLE OF mat_type
-                 WITH NON-UNIQUE KEY material.
-
-"Standard table type definition with reference to the table type defined
-DATA: itab_lt TYPE itab_type.
-"or
-"DATA: itab_lt TYPE STANDARD TABLE OF mat_type.
-
-"Line type Definition with reference to ABAP Dictionary Structure
-TYPES: BEGIN OF mat_ty.
-          INCLUDE STRUCTURE mara.
-TYPES: END OF mat_ty.
-
-"Internal Table Definition with reference to ABAP Dictionary Table
-DATA: itab_lt_01 TYPE STANDARD TABLE OF mara
-              WITH NON-UNIQUE KEY matnr.
-
-DATA: itab_wa LIKE LINE OF itab_lt.
-
-DATA: itab TYPE TABLE OF mara INITIAL SIZE 4.
-DATA: lt_mara TYPE TABLE OF mara WITH EMPTY KEY.
-
-"Syntax for Sorted and Hashed Table types
-TYPES: BEGIN OF line_type,
-          material TYPE matnr,
-          plant TYPE werks_d,
-          po_numb TYPE ebeln,
-       END OF line_type.
-TYPES: itab01 TYPE SORTED TABLE OF line_type
-              WITH UNIQUE KEY material plant.
-TYPES: itab02 TYPE HASHED TABLE OF line_type
-              WITH UNIQUE KEY material plant.
-
-"Sorted Internal Table Data Objects
-DATA: itab01_lt TYPE itab01.
-"or
-"DATA:  itab01_lt TYPE SORTED TABLE OF line_type
-"                 WITH UNIQUE KEY material plant.
-
-"Define Internal table
-DATA: itab_01 TYPE SORTED TABLE OF marc
-           WITH  UNIQUE KEY matnr werks.
-
-"Hashed internal table data objects
-DATA: itab02_lt TYPE itab02.
-"or
-"DATA: itab02_lt TYPE HASHED TABLE OF line_type
-"                WITH UNIQUE KEY material plant.
-DATA: itab03 TYPE HASHED TABLE OF marc
-             WITH UNIQUE KEY matnr werks.
-
-"Definition of Internal table with header line
-DATA: BEGIN OF itab_lt_001 OCCURS 0,
-        material LIKE mard-matnr,
-        plant LIKE mard-werks,
-        mat_desc LIKE makt-maktx,
-        stock LIKE mard-labst,
-      END OF itab_lt_001.
-
-" DATA: BEGIN OF itab_lt OCCURS 0,
-"         material TYPE matnr,
-"         plant TYPE werks_d,
-"         mat_desc TYPE maktx,
-"         stock TYPE labst,
-"       END OF itab_lt.
-
-"Definition of Internal table with header line
-TYPES: BEGIN OF itab_ty,
-         matnr TYPE matnr,
-         werks TYPE werks,
-         maktx TYPE maktx,
-         labst TYPE labst,
-       END OF itab_ty.
-DATA: itab_lt_0001 TYPE itab_ty OCCURS 0 WITH HEADER LINE.
-
-"Syntax to populate an internal table with a select clause
-" DATA: itab_wa TYPE mara.
-" DATA: mara_lt TYPE STANDARD TABLE OF mara.
-" SELECT * FROM mara INTO TABLE mara_lt.
-"Syntax to append
-"APPEND itab_wa to itab_lt
-"APPEND lines OF itab1 TO itab2.
-"APEEND lines OF itab1 FROM 1 TO 50 TO itab2.
-"""""""""""""""""""""""""""""""""
-
-"Code for the INSERT statement
-START-OF-SELECTION.
-    TYPES: BEGIN OF line,
-             material TYPE matnr,
-             plant TYPE werks_d,
-             quantity TYPE menge_d,
-           END OF line.
-    DATA: itab01 TYPE SORTED TABLE OF line
-                 WITH UNIQUE KEY material.
-    DATA: itab_wq TYPE line.
-          itab_wq-material = 'M2'.
-          itab_wq-plant = '1000'.
-          itab_wq-quantity = 100.
-    INSERT itab_wq INTO TABLE itab01.
-    itab_wq-material = 'M1'.
-    itab_wq-plant = '1000'.
-    itab_wq-quantity = 200.
-    INSERT itab_wq INTO TABLE itab01.
-    itab_wq-material = 'M3'.
-    itab_wq-plant = '1000'.
-    itab_wq-quantity = 100.
-    INSERT itab_wq INTO TABLE itab01.
-END-OF-SELECTION.*&---------------------------------------------------------------------*
-*& Report  ZSHEKHAR01
-*&
-*&---------------------------------------------------------------------*
-*&
-*&
-*&---------------------------------------------------------------------*
-REPORT ZSHEKHAR01.
-
-""""""""""""""""""""""""""
-WRITE: 12345.
-WRITE: 'A text literal'.
-WRITE: `A STRING literal`.
-
-"""""""""""""""""""""""""
-CONSTANTS: c_nump TYPE P DECIMALS 3 VALUE '123.657',
-           c_city TYPE C LENGTH 10 VALUE 'BERLIN'.
-
-"""""""""""""""""""""""""
-"GoTo -> Text Elements -> Selection texts
-WRITE text-001.
-WRITE 'THIS is an English text'(002).
-
-"""""""""""""""""""""""""
-DATA: count TYPE I,
-      count2 TYPE I VALUE 10.
-
-"""""""""""""""""""""""""
-"Declaration of field symbols
-" DATA: itab TYPE STANDARD TABLE OF mara.
-
-" SELECT matnr bismt FROM mara
-"     INTO CORRESPONDING FIELDS OF TABLE itab
-"                                  WHERE mtart EQ 'FERT'.
-
-" LOOP AT itab INTO DATA(wa).
-"     WRITE:/ wa-matnr, wa-bismt.
-" ENDLOOP.
-
-" READ TABLE itab WITH KEY matnr = '1400-500' INTO  DATA(wa2).
-
-"""""""""""""""""""""""""
-"Declaration of actual parameters
-" DATA: itab TYPE STANDARD TABLE OF mara.
-
-" LOOP AT itab ASSIGNING FIELD-SYMBOL(<line>)
-"     WRITE:/ <line>-matnr, <line>-bismt.
-" ENDLOOP.
-
-" READ TABLE itab WITH KEY matnr = 'ABC'
-"                          ASSIGNING FIELD-SYMBOL(<line2>).
-
-"""""""""""""""""""""""""
-"Declaration of Table Work Area
-" oref->meth( IMPORTING p1 = DATA(a1)
-"         IMPORTING p2 = DATA(a2)
-" ...).
-
-"""""""""""""""""""""""""
-"STATISTICS keyword
-DO 5 TIMES.
-  PERFORM dataobject_example.
-ENDDO.
-FORM dataobject_example.
-DATA    count1 TYPE I.
-STATICS     count2 TYPE I.
-count1 = count1 + 1.
-count2 = count2 + 1.
-WRITE:/ 'Count1: ', count1, 'Count2: ', count2.
-ENDFORM.
-
-"""""""""""""""""""""""""
-"Usage of Data Keyword
-DATA: var1 TYPE I.
-DATA: var2 LIKE var1.
-DATA: var3  TYPE STRING VALUE 'Hello'.
-DATA: num1 TYPE I VALUE 5,
-      num2 TYPE I VALUE 2,
-      RESULT TYPE I.
-START-OF-SELECTION.
       RESULT = num1 / num2.
-      Write RESULT.
-END-OF-SELECTION.
 DATA: pack_num1 TYPE P LENGTH 8 DECIMALS 2,
       pack_num2 TYPE P LENGTH 8 DECIMALS 2 VALUE '2.55'.
 DATA: dec_num1 TYPE decfloat16,
       dec_num2 TYPE decfloat34.
 DATA: hex(1) TYPE X VALUE '09'.
-
+```
+```
 "Syntax to declare incompete data types
-"DATA var1 TYPE C.         "character variable of length 1
-"DATA: var2(3) TYPE C.         "character variable of length 3
-"DATA: var3 TYPE C LENGTH 3.         "character variable of length 3
-
+DATA var1 TYPE C.         "character variable of length 1
+DATA: var2(3) TYPE C.         "character variable of length 3
+DATA: var3 TYPE C LENGTH 3.         "character variable of length 3
+```
+```
 "Syntax for data types and data objects
 TYPES: v_char1(2) TYPE C.
 TYPES: v_char2 TYPE C LENGTH 10.
 TYPES: num1 TYPE P DECIMALS 2.
 DATA: name(20) TYPE C.
 DATA: price TYPE P DECIMALS 2.
-
-"""""""""""""""""""""""""
-"TYPES: <type_name> ... [TYPE <ABAP-Type> | LIKE <obj> ].
-"TYPES: char1 TYPE C LENGTH 8,
-"       num1 TYPE N LENGTH 6,
-"       pack1 TYPE P LENGTH 3 DECIMALS 2.
-
+```
+```
+TYPES: <type_name> ... [TYPE <ABAP-Type> | LIKE <obj> ].
+TYPES: char1 TYPE C LENGTH 8,
+       num1 TYPE N LENGTH 6,
+       pack1 TYPE P LENGTH 3 DECIMALS 2.
+```
+```
 "Define the structure data type in an ABAP program
 TYPES: BEGIN OF address_ty,
              firstname TYPE C LENGTH 20,
@@ -753,29 +461,30 @@ TYPES: BEGIN OF address_ty,
              street TYPE C LENGTH 30,
              city TYPE C LENGTH 20,
        END OF address_ty.
-
+```
+```
 "Access individual components of the structure data  type in the program
-"DATA: addrs TYPE address_ty,
-"      addrs-firstname = 'Bob',
-"      addrs-lastname = 'Johnson',
-"      addrs-street = '123 Adam Lane'.
-"WRITE: addrs-firstname, addrs-lastname, addrs-street.
-
-
+DATA: addrs TYPE address_ty,
+      addrs-firstname = 'Bob',
+      addrs-lastname = 'Johnson',
+      addrs-street = '123 Adam Lane'.
+WRITE: addrs-firstname, addrs-lastname, addrs-street.
+```
+```
 "Define a nested structure type locally in an ABAP program
 TYPES: BEGIN OF stru1,
-          fldl TYPE I,
-          BEGIN OF stru2,
-             fld2 TYPE C,
-             fld3 TYPE I,
-          END of stru2,
+         fldl TYPE I,
+         BEGIN OF stru2,
+            fld2 TYPE C,
+            fld3 TYPE I,
+         END of stru2,
        END OF stru1.
 
 TYPES: BEGIN of addr1,
-          street_no TYPE C LENGTH 30,
-          city TYPE C LENGTH 20,
-          state TYPE C LENGTH 30,
-          country TYPE C LENGTH 20,
+         street_no TYPE C LENGTH 30,
+         city TYPE C LENGTH 20,
+         state TYPE C LENGTH 30,
+         country TYPE C LENGTH 20,
        END OF addr1.
 
 TYPES: BEGIN OF contact_det,
@@ -784,9 +493,10 @@ TYPES: BEGIN OF contact_det,
           address TYPE addr1,
           phoneno TYPE C LENGTH 15,
        END OF contact_det.
-
+```
+```
 "Syntax to create a table type
-"TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
+TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
 TYPES: BEGIN OF flightinfo,
           carrid TYPE s_carr_id,
           carrname TYPE s_carrname,
@@ -797,7 +507,8 @@ TYPES: BEGIN OF flightinfo,
 
 TYPES: itab TYPE SORTED TABLE OF flightinfo
             WITH UNIQUE KEY carrid.
-
+```
+```
 "Syntax for MESH Declaration
 TYPES:
       BEGIN OF line1,
@@ -816,28 +527,34 @@ TYPES:
             ASSOCIATION to_node2 TO snode2 ON col1 = col1,
          snode2 TYPE t_itab2,
       END OF MESH t_mesh.
-
+```
+```
 "Line Type Definition for Internal Table
 TYPES: BEGIN OF mat_type,
           material TYPE matnr,
           plant TYPE werks_d,
           qty TYPE P DECIMALS 2,
        END OF mat_type.
-
+```
+```
 "Standard table type definition with refernce to line type
 TYPES: itab_type TYPE STANDARD TABLE OF mat_type
                  WITH NON-UNIQUE KEY material.
 
+```
+```
 "Standard table type definition with reference to the table type defined
 DATA: itab_lt TYPE itab_type.
 "or
-"DATA: itab_lt TYPE STANDARD TABLE OF mat_type.
-
+DATA: itab_lt TYPE STANDARD TABLE OF mat_type.
+```
+```
 "Line type Definition with reference to ABAP Dictionary Structure
 TYPES: BEGIN OF mat_ty.
           INCLUDE STRUCTURE mara.
 TYPES: END OF mat_ty.
-
+```
+```
 "Internal Table Definition with reference to ABAP Dictionary Table
 DATA: itab_lt_01 TYPE STANDARD TABLE OF mara
               WITH NON-UNIQUE KEY matnr.
@@ -846,7 +563,8 @@ DATA: itab_wa LIKE LINE OF itab_lt.
 
 DATA: itab TYPE TABLE OF mara INITIAL SIZE 4.
 DATA: lt_mara TYPE TABLE OF mara WITH EMPTY KEY.
-
+```
+```
 "Syntax for Sorted and Hashed Table types
 TYPES: BEGIN OF line_type,
           material TYPE matnr,
@@ -857,25 +575,30 @@ TYPES: itab01 TYPE SORTED TABLE OF line_type
               WITH UNIQUE KEY material plant.
 TYPES: itab02 TYPE HASHED TABLE OF line_type
               WITH UNIQUE KEY material plant.
-
+```
+```
 "Sorted Internal Table Data Objects
 DATA: itab01_lt TYPE itab01.
 "or
-"DATA:  itab01_lt TYPE SORTED TABLE OF line_type
-"                 WITH UNIQUE KEY material plant.
-
+DATA:  itab01_lt TYPE SORTED TABLE OF line_type
+                 WITH UNIQUE KEY material plant.
+```
+```
 "Define Internal table
 DATA: itab_01 TYPE SORTED TABLE OF marc
            WITH  UNIQUE KEY matnr werks.
 
+```
+```
 "Hashed internal table data objects
 DATA: itab02_lt TYPE itab02.
 "or
-"DATA: itab02_lt TYPE HASHED TABLE OF line_type
-"                WITH UNIQUE KEY material plant.
+DATA: itab02_lt TYPE HASHED TABLE OF line_type
+                WITH UNIQUE KEY material plant.
 DATA: itab03 TYPE HASHED TABLE OF marc
              WITH UNIQUE KEY matnr werks.
-
+```
+```
 "Definition of Internal table with header line
 DATA: BEGIN OF itab_lt_001 OCCURS 0,
         material LIKE mard-matnr,
@@ -884,13 +607,14 @@ DATA: BEGIN OF itab_lt_001 OCCURS 0,
         stock LIKE mard-labst,
       END OF itab_lt_001.
 
-" DATA: BEGIN OF itab_lt OCCURS 0,
-"         material TYPE matnr,
-"         plant TYPE werks_d,
-"         mat_desc TYPE maktx,
-"         stock TYPE labst,
-"       END OF itab_lt.
-
+ DATA: BEGIN OF itab_lt OCCURS 0,
+         material TYPE matnr,
+         plant TYPE werks_d,
+         mat_desc TYPE maktx,
+         stock TYPE labst,
+                END OF itab_lt.
+```
+```
 "Definition of Internal table with header line
 TYPES: BEGIN OF itab_ty,
          matnr TYPE matnr,
@@ -899,17 +623,18 @@ TYPES: BEGIN OF itab_ty,
          labst TYPE labst,
        END OF itab_ty.
 DATA: itab_lt_0001 TYPE itab_ty OCCURS 0 WITH HEADER LINE.
-
+```
+```
 "Syntax to populate an internal table with a select clause
-" DATA: itab_wa TYPE mara.
-" DATA: mara_lt TYPE STANDARD TABLE OF mara.
-" SELECT * FROM mara INTO TABLE mara_lt.
+DATA: itab_wa TYPE mara.
+ DATA: mara_lt TYPE STANDARD TABLE OF mara.
+ SELECT * FROM mara INTO TABLE mara_lt.
 "Syntax to append
-"APPEND itab_wa to itab_lt
-"APPEND lines OF itab1 TO itab2.
-"APEEND lines OF itab1 FROM 1 TO 50 TO itab2.
-"""""""""""""""""""""""""""""""""
-
+APPEND itab_wa to itab_lt
+APPEND lines OF itab1 TO itab2.
+APEEND lines OF itab1 FROM 1 TO 50 TO itab2.
+```
+```
 "Code for the INSERT statement
 START-OF-SELECTION.
     TYPES: BEGIN OF line,
@@ -933,10 +658,14 @@ START-OF-SELECTION.
     itab_wq-quantity = 100.
     INSERT itab_wq INTO TABLE itab01.
 END-OF-SELECTION.
-
-"INSERT LINES OF itab1 FROM <idx1> TO <idx2> INTO TABLE itab2.
-
-" MOVE-CORRESPONDING itab1 TO itab2.
+```
+```
+INSERT LINES OF itab1 FROM <idx1> TO <idx2> INTO TABLE itab2.
+```
+```
+MOVE-CORRESPONDING itab1 TO itab2.
+```
+```
 "Syntax for move corresponding for internal tables
 WRITE 'MOVE-CORRESPONDING FOR INTERNAL TABLES'.
 TYPES: BEGIN OF ty_marc1,
@@ -976,10 +705,12 @@ MODIFY itab1 FROM wa TRANSPORTING marc.
 CLEAR matplant.
 ENDLOOP.
 MOVE-CORRESPONDING itab1 TO itab2 EXPANDING NESTED TABLES.
-
+```
+```
 "Does not delete existing contents of itab2
 MOVE-CORRESPONDING itab1 TO itab2 KEEPING TARGET LINES.
-
+```
+```
 "Syntax of COLLECT Statement of Internal table
 WRITE: / `Syntax of COLLECT Statement of Internal table`.
 TYPES: BEGIN OF line_01,
@@ -1009,13 +740,15 @@ Clear itab_wa_01.
 LOOP AT itab_001 into itab_wa_01.
 WRITE: / itab_wa_01-matnr, itab_wa_01-qty1.
 ENDLOOP.
-
+```
+```
 "Syntax to read Internal table lines
 DATA: itab_wa TYPE marc,
 itab_lt TYPE STANDARD TABLE OF marc.
 FIELD-SYMBOLS: <fs> TYPE marc.
 READ TABLE itab INDEX 10 INTO itab_wa.
-
+```
+```
 "Code to append and modify and internal table
 WRITE: / `Code to append and modify and internal table`.
 TYPES: BEGIN OF line,
@@ -1037,12 +770,12 @@ LOOP AT itab_lt WHERE matnr = 'M1'. INTO itab_wa.
 itab_wa-qty1 = 100.
 MODIFY itab_lt FROM itab_wa TRANSPORTING qty1.
 ENDLOOP.
-
-"SELECT * from KNA1 INTO CORRESPONDING FIELDS OF TABLE itab02.
-" SORT itab02 by kunnr.
-" READ TABLE itab02 WITH KEY kunnr = '12345'
-" INTO wa BINARY SEARCH.
-
+SELECT * from KNA1 INTO CORRESPONDING FIELDS OF TABLE itab02.
+ SORT itab02 by kunnr.
+ READ TABLE itab02 WITH KEY kunnr = '12345'
+ INTO wa BINARY SEARCH.
+```
+```
 "Syntax for the LOOP statement
 TYPES: BEGIN OF itab_ty,
           matnr TYPE matnr,
@@ -1063,10 +796,12 @@ ENDLOOP.
 LOOP AT itab_lt FROM 1 TO 10 INTO wa.
 WRITE: / wa-matnr, wa-werks.
 ENDLOOP
-
+```
+```
 "Modify table with specified components only i.e. fld1 and fld2
 MODIFY TABLE itab FROM wa TRANSPORTING fld1 fld2.
-
+```
+```
 "Using delete statement to delete line from internal tables
 DELETE itab INDEX idx.
 DELETE itab FROM idx1 TO idx2.
@@ -1074,7 +809,8 @@ DELETE itab WHERE MATERIAL = '12345'.
 DELETE ADJACENT DUPLICATES FROM itab COMPARING material plant.
 DELETE ADJACENT DUPLICATES FROM itab.
 DELETE TABLE itab WITH TABLE KEY material = '12345' plant = 'abcd'.
-
+```
+```
 "Using sort method
 SORT itab.
 SORT itab ascending.
@@ -1082,7 +818,8 @@ SORT itab descending.
 SORT itab BY material plant DESCENDING.
 SORT itab AS TEXT.
 SORT itab by (stab).
-
+```
+```
 "Empty the internal table
 "Deletes or intializes the internal table body lines
 CLEAR itab[].
@@ -1094,26 +831,31 @@ CLEAR: itab, itab[].
 "or
 CLEAR: itab.
 REFRESH itab.
-
+```
+```
 "Table body is deleted and memory area for the reserved internal table is released
 FREE itab.
-
+```
+```
 "Ways of accessing a row in a table
 DATA(wa) = itab[2].
 DATA(wa) = itab[matnr = '123' werks = '1000'].
 DATA(wa) = itab[ KEY primary_key COMPONENTS matnr = '1400-500' werks = '1000' ].
-
+```
+```
 "Line Index to identify the index of a row in an internal table
 LINE_INDEX( table_exp ).
 DATA(idx1) = LINE_INDEX( itab[ matnr = '1400-500' werks = '1000' ] ).
 WRITE:/ 'index:-' , idx1.
-
+```
+```
 "Example code for line exists
 IF line_exists( itab[ matnr = '1400-500' werks = '1000' ] ).
   DATA(wa2) = itab[ KEY primary_key COMPONENTS matnr = '1400-500' werks = '1000' ].
   WRITE:/ 'Line exists', wa-matnr, wa-werks.
 ENDIF.
-
+```
+```
 "SELECT example
 SELECT fldate planetype seatsocc seatsmax
 FROM sflight
@@ -1121,7 +863,8 @@ INTO (fldate,planetype,seatsocc,seatsmax)
 WHERE carrid = flight-carrid
 AND connid = flight-connid.
 ENDSELECT.
-
+```
+```
 SELECT *
 FROM sflight
 LEFT JOIN scarr
@@ -1130,7 +873,8 @@ INTO CORRESPONDING FIELDS OF TABLE gt_sflight
 WHERE sflight~carrid IN s_carrid
 AND sflight~connid IN s_connid
 AND sflight~fldate IN s_fldate.
-
+```
+```
 "Call to an lock object
 CALL FUNCTION 'ENQUEUE_ESRDIRE'
 EXPORTING
@@ -1148,7 +892,8 @@ TYPE 'E'
 NUMBER sy-msgno
 WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
 ENDIF.
-
+```
+```
 "Call to an Update Module
 CALL FUNCTION 'WFRULES_WRITE_DOCUMENT' IN UPDATE TASK
 EXPORTING
@@ -1165,7 +910,8 @@ xtwfns = xtwfns
 ytwfns = ytwfns
 xtwfsa = xtwfsa
 ytwfsa = ytwfsa.
-
+```
+```
 "Code of an update module
 FUNCTION wfrules_write_document .
 CALL FUNCTION 'CHANGEDOCUMENT_OPEN'
@@ -1181,19 +927,22 @@ CASE sy-subrc.
 WHEN 1. MESSAGE a600 WITH 'SEQUENCE INVALID'.
 WHEN 2. MESSAGE a600 WITH 'OPEN ERROR'.
 ENDCASE.
-
+```
+```
 "A New Introductory Statement for a Report
 REPORT z_new_report
-
 "A Modified Report Introductory Statement
 REPORT z_new_report LINE-SIZE 250 NO STANDARD PAGE HEADING MESSAGE-ID z_message_class.
-
+```
+```
 "Example of a MESSAGE-Based Exception
 MESSAGE e008(38) WITH 'FOOBAR' RAISING table_cannot_be_loaded.
-
+```
+```
 "Example of a Class-Based Exception
 RAISE EXCEPTION TYPE cx_sy_dynamic_osql_semantics EXPORTING textid = cx_sy_dynamic_osql_semantics=>unknown_table_name token = 'FOOBAR'.
-
+```
+```
 "Call to a Subroutine with Both USING and CHANGING
 IF cursor_field = 'SOURCE_ID' AND cursor_value NE space.
 PERFORM create_request
@@ -1201,7 +950,8 @@ USING cursor_value
 abap_pgeditor->abap_editor->context->context_type
 CHANGING l_wb_request.
 ELSE.
-
+```
+```
 "The Subroutine (FORM Routine)
 FORM create_request USING p_name TYPE progname
 p_type
@@ -1227,7 +977,8 @@ action_cancelled = 2
 error_occured = 3
 OTHERS = 4.
 ENDFORM. "create_request
-
+```
+```
 "Method coding
 method convert_number_base.
 data:
@@ -1250,7 +1001,8 @@ destination_base is initial.
 raise base_not_identified.
 endif.
 lv_iterations = strlen( lc_number_base ).
-
+```
+```
 "Calculating Bytes per Character
 DATA:
 lv_text TYPE C LENGTH 1,
@@ -1261,7 +1013,8 @@ lv_bytes TYPE I.
 DESCRIBE FIELD lv_text: LENGTH lv_blen IN BYTE MODE,
 LENGTH lv_clen IN CHARACTER MODE.
 lv_bytes = lv_blen / lv_clen.
-
+```
+```
 "PBO and PAI Module Definition
 *&--------------------------------------------*
 *& Module INIT_SCREEN_100 OUTPUT
@@ -1284,7 +1037,8 @@ IF exit NE space.
 LEAVE PROGRAM.
 ENDIF.
 ENDMODULE. "USER_COMMAND_100 INPUT
-
+```
+```
 "Controlled ABAP Dialog
 PROCESS BEFORE OUTPUT.
 MODULE init_screen_100.
@@ -1295,7 +1049,8 @@ FIELD box2.
 MODULE module_2.
 FIELD: box1, box3.
 MODULE module_3.
-
+```
+```
 "Input Check with CHAIN and ENDCHAIN Statements
 PROCESS BEFORE OUTPUT.
 MODULE init_screen_9001.
@@ -1311,7 +1066,8 @@ FIELD input5.
 FIELD input6 MODULE chain_module_2.
 ENDCHAIN.
 MODULE execution.
-
+```
+```
 "Input Check Module
 *---------------------------------------------*
 * MODULE chain_module_1 INPUT
@@ -1331,7 +1087,8 @@ IF sum <= 100.
 MESSAGE e000(fb) WITH text-004 '100' text-002.
 ENDIF.
 ENDMODULE. " CHAIN_MODULE_2 INPUT
-
+```
+```
 "Conditional ABAP Dialog
 PROCESS BEFORE OUTPUT.
 MODULE init_screen_9002.
@@ -1343,7 +1100,8 @@ MODULE chain_module_1 ON CHAIN-INPUT.
 FIELD input3
 MODULE chain_module_2 ON CHAIN-REQUEST.
 ENDCHAIN.
-
+```
+```
 "Module for AT EXIT-COMMAND
 *&--------------------------------------------*
 *& Module CANCEL INPUT
@@ -1364,7 +1122,8 @@ LEAVE SCREEN.
 ENDCASE.
 LEAVE PROGRAM.
 ENDMODULE. " CANCEL INPUT
-
+```
+```
 "Input Check in Screen Flow Logic
 PROCESS BEFORE OUTPUT.
 MODULE init_screen_0100.
@@ -1378,14 +1137,16 @@ WHERE carrid = carrier AND connid = connect
 WHENEVER NOT FOUND SEND ERRORMESSAGE 107
 WITH carrier connect.
 MODULE module_2.
-
+```
+```
 "Example Code to Deactivate Function Code
 MODULE status_0100 output.
 APPEND 'CHANGE' TO fcode.
 APPEND 'CHANGE' TO fcode.
 SET PF-STATUS 'STATUS_100' EXCLUDING fcode.
 ENDMODULE.
-
+```
+```
 "Template for ABAP Class
 CLASS CL1 DEFINITION.
 PUBLIC SECTION.
@@ -1409,15 +1170,18 @@ ENDMETHOD.
 METHOD M3.
 ENDMETHOD.
 ENDCLASS.
-
+```
+```
 "Create object
 DATA: ref_var TYPE REF TO cl_article_hierarchy.
 START-OF-SELECTION.
 CREATE OBJECT ref_var.
-
+```
+```
 "Create constants
 CONSTANTS: const1 TYPE C VALUE 'A'.
-
+```
+```
 "Declaration of Method in a Local Class
 CLASS c_team DEFINITION.
 PUBLIC SECTION.
@@ -1451,7 +1215,8 @@ biker_selection LIKE biker_tab,
 biker LIKE LINE OF biker_tab.
 METHODS: write_list.
 ENDCLASS. "c_team DEFINITION
-
+```
+```
 "Implementation of Methods in a Local Class
 CLASS c_team IMPLEMENTATION.
 METHOD class_constructor.
@@ -1520,7 +1285,8 @@ status_line-speed.
 ENDLOOP.
 ENDMETHOD. "write_list
 ENDCLASS. "c_team IMPLEMENTATION
-
+```
+```
 "Calling Instance Methods
 REPORT demo_class_counter .
 *-----------------------------------------------------------*
@@ -1565,7 +1331,8 @@ CALL METHOD cnt->get
 IMPORTING
 get_value = number.
 WRITE number.
-
+```
+```
 "Create ALV Grid
 DATA:
 gt_sflight TYPE TABLE OF sflight,
@@ -1600,19 +1367,22 @@ i_structure_name = 'SFLIGHT'
 is_layout = gs_layout
 CHANGING
 it_outtab = gt_sflight.
-
+```
+```
 "Event Handler
 METHOD onactiongoto_out_01 .
 wd_this->fire_out_01_plg(
 ).
 ENDMETHOD.
-
+```
+```
 "Functional Method Usage
 lv_calc_amt = lv_source_amt / lv_factor.
 IF lv_amt NE lr_util->round_up( lv_calc_amt ).
 lv_amt = lr_util->round_up( lv_calc_amt ).
 ENDIF.
-
+```
+```
 "Example of a Static Method Call
 LOOP AT <table> ASSIGNING <wa>.
 MOVE-CORRESPONDING <wa> TO <structure>.
@@ -1631,7 +1401,8 @@ unable_to_preserve_space = 2
 OTHERS = 3
 ).
 ASSERT sy-subrc = 0.
-
+```
+```
 "Example of an Up Cast
 DATA:
 lv_name TYPE C LENGTH 30,
@@ -1641,7 +1412,8 @@ lr_employee TYPE REF TO lcl_employee.
 CREATE OBJECT lr_manager.
 lr_person = lr_manager. " Up cast
 lv_name = lr_person->get_name( ).
-
+```
+```
 "Declarations for Generic Handling
 TYPES:
 llt_person TYPE REF TO lcl_person,
@@ -1655,7 +1427,8 @@ lr_manager TYPE REF TO lcl_manager,
 lr_employee TYPE REF TO lcl_employee.
 FIELD-SYMBOLS:
 <person> TYPE REF TO lcl_person.
-
+```
+```
 "Up Cast and Polymorphism Calls
 APPEND INITIAL LINE TO lt_person ASSIGNING <person>.
 <person> = lr_manager.
@@ -1666,13 +1439,16 @@ lv_name = <person>->get_name( ).
 lv_salary = <person>->get_salary( ).
 WRITE: / lv_name, lv_bonus.
 ENDLOOP.
-
+```
+```
 "Down Cast
 lr_manager ?= lr_person. "Down cast
-
+```
+```
 "Object Reference to an Interface Component (set_fieldcatalog)
 l_r_bi_query_ad->if_rsroa_bi_query~set_fieldcatalog(l_ts_fieldcatalog ).
-
+```
+```
 "ALIAS for an Interface Component
 ALIASES true FOR if_salv_c_bool_sap~true.
 IF lv_state EQ true.
