@@ -1,5 +1,5 @@
 # ABAP-7.4-Certification-Guide
-A repository containing detailed guidelines for SAP ABAP
+ A repository containing detailed guidelines for SAP ABAP
 
 ## Cover
 ## SAP Press
@@ -18,202 +18,258 @@ A repository containing detailed guidelines for SAP ABAP
 - Competency level - A, B, C, D
 - Exam topic
 ### Practice Questions
-- Question Stimulus - varies but intention is scenario specific
-- Actual Question
-- Question Hint
-- Answers
->> Multiple response - more than one choice
->> Multiple choice - one choice at a time
->> True/False
->> Fill in the blanks
-> Sequence/Ranking - mark the correct option in sequence  
+1. Question Stimulus - varies but intention is scenario specific
+2. Actual Question
+3. Question Hint
+4. Answers
+   - Multiple response - more than one choice
+   - Multiple choice - one choice at a time
+   - True/False
+   - Fill in the blanks
+5. Sequence/Ranking - mark the correct option in sequence  
 ### Summary
-> Practice with sample tests, read document, apply for certification, pass and get the certificate.
+Practice with sample tests, read document, apply for certification, pass and get the certificate.
 ## Part 1: General Introduction
 ### ABAP Development Certification Track: Overview
 #### Certification Exam Scoring Changes
 ##### Certification Levels
-> Associate: 1-3 years of knowledge and experience
-> Professional
-> Master
+1. Associate: 1-3 years of knowledge and experience
+2. Professional
+3. Master
 ##### Advanced Certification Levels
-> One round sitting examination could be attempted 3 times a year only. After failing, wait for 30 days for next attempt. Fee doesn't varies.
+ One round sitting examination could be attempted 3 times a year only. After failing, wait for 30 days for next attempt. Fee doesn't varies.
 #### Becoming an SAP Certified ABAP Development Associate: Overview
-> C_TAW12_740
-> SAP Certified Development Associate—ABAP with SAP NetWeaver 7.40
+1. C_TAW12_740
+2. SAP Certified Development Associate—ABAP with SAP NetWeaver 7.40
 #### Associate Examination Specifics
-> Software components: SAP NetWeaver 7.40
-> Number of questions: 80
-> Duration: 180 minutes
+1. Software components: SAP NetWeaver 7.40
+2. Number of questions: 80
+3. Duration: 180 minutes
 ### Courses and Experience
 #### Training Courses for ABAP
-> TAW 10
-> TAW 11
-> TAW 12
-> BC400
-> BC401
-> BC402
-> BC405
-> BC414
-> BC425
-> BC430
-> NET310
-> NW001
+1. TAW 10
+2. TAW 11
+3. TAW 12
+4. BC400
+5. BC401
+6. BC402
+7. BC405
+8. BC414
+9. BC425
+10. BC430
+11. NET310
+12. NW001
 #### Sources of information
-> SAP Community Network (SCN) - http://scn.sap.com
-> SAP Help Portal - http://help.sap.com
+1. SAP Community Network (SCN) - http://scn.sap.com
+2. SAP Help Portal - http://help.sap.com
 #### Strategic Understanding
-> Monitor your comprehension
-> Always check the logic behind the ideas
-> Watch out for anything that seems counter intuitive
-> Test your own understanding
-> Generate your own examples
-> Think in pictures, shapes and colors
-> Use mnemonics/memory-training devices for important ideas.
-> Use repetition
+- Monitor your comprehension
+- Always check the logic behind the ideas
+- Watch out for anything that seems counter intuitive
+- Test your own understanding
+- Generate your own examples
+- Think in pictures, shapes and colors
+- Use mnemonics/memory-training devices for important ideas.
+- Use repetition
 #### SAP Examination Strategies
-> There is never a strategy. Just drink lots of water.
+ There is never a strategy. Just drink lots of water.
 #### General Examination Strategies
-> There is never a strategy. Just drink lots of water.
+ There is never a strategy. Just drink lots of water.
 #### Summary
-> Additional sources of information that can be useful for the certification examination.
+ Additional sources of information that can be useful for the certification examination.
 ## Part 2: Exam Preparation
 ### SAP NetWeaver: Overview
 #### Objectives of this Portion of the Test
 ### ABAP Workbench Usage
-> Objectives of this Portion of the Test
->> ABAP Workbench and development tools
->> ABAP Workbench settings
->> The use of various browsers in the ABAP Workbench
->> The Front-End Editor and the settings to improve productivity
->> Development Packages and Transport Organizer
-> Key Concepts Refresher
-> ABAP Workbench
-> Repository Browser
-> Repository Information System
-> Workbench Settings
-> ABAP Editor and Workbench Settings
-> ABAP Workbench Tools in Detail
-> Enhancement Information System
-> Packages and Their Attributes
-> Transport Organizer
-> Practice Questions
-> Practice Question Answers and Explanations
-> Takeaway
-> Refresher
-> Summary
+1. Objectives of this Portion of the Test
+   - ABAP Workbench and development tools
+   - ABAP Workbench settings
+   - The use of various browsers in the ABAP Workbench
+   - The Front-End Editor and the settings to improve productive
+   - Development Packages and Transport Organizer
+2. Key Concepts Refresher
+3. ABAP Workbench
+4. Repository Browser
+5. Repository Information System
+6. Workbench Settings
+7. ABAP Editor and Workbench Settings
+8. ABAP Workbench Tools in Detail
+9. Enhancement Information System
+10. Packages and Their Attributes
+11. Transport Organizer
+12. Practice Questions
+13. Practice Question Answers and Explanations
+14. Takeaway
+15. Refresher
+16. Summary
 ### ABAP Debugger Program Usage
-> Various ways to start the debugger
-> Breakpoints
-> Watchpoints
-> Assertions
-> Viewing and modifying data objects
-> Understanding the architecture of the debugger
-> Key Concepts Refresher
->> New and Classic Debugger
->>> SYSTEM -> UTILITIES -> DEBUG ABAP or SYSTEM -> UTILITIES -> DEBUG SCREEN
->>> shortcut: /h and press ENTER
->>> Execute debugging 
->>> Select desired line AND select SET/DELETE breakpoint 
->> New Debugger Tools and UI
->> Assertions and Breakpoints
->> New Debugger Customization and Settings
->>> SY-SUBRC: system variable containing the statement return code
->>> SY-TABIX: system varible containing the internal table row last accessed
->>> SY-DATUM: show system current date
->>> SY-UZEIT: show system current time
->>> SY_UNAME: show userID of current user
+1. Various ways to start the debugger
+2. Breakpoints
+3. Watchpoints
+4. Assertions
+5. Viewing and modifying data objects
+6. Understanding the architecture of the debugger
+7. Key Concepts Refresher
+   - New and Classic Debugger
+      - SYSTEM -> UTILITIES -> DEBUG ABAP or SYSTEM -> UTILITIES -> DEBUG SCREEN
+      - shortcut: /h and press ENTER
+      - Execute debugging 
+      - Select desired line AND select SET/DELETE breakpoint 
+   - New Debugger Tools and UI
+   - Assertions and Breakpoints
+   - New Debugger Customization and Settings
+      - SY-SUBRC: system variable containing the statement return code
+      - SY-TABIX: system varible containing the internal table row last accessed
+      - SY-DATUM: show system current date
+      - SY-UZEIT: show system current time
+      - SY_UNAME: show userID of current user
 ### ABAP Types and Data Objects
-> Objectives
->> Data types and data objects
->> Predefined and generic data types
->> Valid operations on the various data objects and their usage in programs
->> Local data types and the global data types
->> Structure declarations and the differences between flat, nested and deep structures
-> Key concepts refresher
-```
-difference betweeen predefined and generic data types and their usage within the program
-syntax of the data declaration
-valid operations of the data objects
-```
+1. Objectives
+   - Data types and data objects
+   - Predefined and generic data types
+   - Valid operations on the various data objects and their usage in programs
+   - Local data types and the global data types
+   - Structure declarations and the differences between flat, nested and deep structures
+2. Key concepts refresher
+   - difference betweeen predefined and generic data types and their usage within the program
+   - syntax of the data declaration
+   - valid operations of the data objects
+
 ## ABAP Types and Data Objects
->>> Data types 
->>>> Data types are used for the definition of data objects - define technical attributes of data objects - define how data stored in memory - operations are possible on the data objects based on the data type - used for definition of interface parameters - used for input output field  in the ABAP programs - used to declare PARAMETERS and SELECT-OPTIONS for program selection screens and dynpro screen fields 
->>>>> Data types 
->>>>>> Predefined data types
->>>>>> Local data types 
->>>>>> Global data types
->>>>>>> ABAP dictionary objects
->>>>>>> ABAP dictionary type group
+1. Data types - Data types are used for the definition of data objects - define technical attributes of data objects - define how data stored in memory - operations are possible on the data objects based on the data type - used for definition of interface parameters - used for input output field  in the ABAP programs - used to declare PARAMETERS and SELECT-OPTIONS for program selection screens and dynpro screen fields 
+2. Data types 
+   - Predefined data types
+   - Local data types 
+   - Global data types
+      - ABAP dictionary objects
+      - ABAP dictionary type group
 ![alt text](images/ABAP%20Data%20Types.png)
->>>>> Data objects 
->>>>>> Data objects are temporary storage in the program and occupy memory to store data.
->>>>>>> Literals - unnamed data objects with fixed values
->>>>>>>> Numeric literals - sequence of digits that contain a plus or minus sign - value ranges from -2^31+1 to 2^31-1 - WRITE: 12345.
----
->>>>>>>> Text field literals - sequence of cahracters in inverted commas - value ranges from 1 to 255 characters in length - WRITE: 'A text literal'.
----
->>>>>>>> String literals - sequence of characters enclosed with back quotes - WRITE: `A STRING literal`
----
->>>>>>> Constants - named data objects with fixed values and defined statically using a declarative statement - CONSTANTS: c_nump TYPE P DECIMALS 3 VALUE '123.657'. c_city TYPE C LENGTH 10 VALUE 'BERLIN'
----
->>>>>>> Text Symbols - TEXT-XXX, where XXX is the text ID  for the text symbol maintained in the text pool - WRITE text-001. WRITE 'THIS is an English text'(002). - SE11 -> syst
----
->>>>>>> Predefined data objects - ABAP dictionary - SYST
+3. Data objects - Data objects are temporary storage in the program and occupy memory to store data.
+      - Literals - unnamed data objects with fixed values
+      - Numeric literals - sequence of digits that contain a plus or minus sign - value ranges from -2^31+1 to 2^31-1 - WRITE: 12345.
+      - Text field literals - sequence of cahracters in inverted commas - value ranges from 1 to 255 characters in length - WRITE: 'A text literal'.
+      - String literals - sequence of characters enclosed with back quotes - WRITE: `A STRING literal`
+      - Constants - named data objects with fixed values and defined statically using a declarative statement - CONSTANTS: c_nump TYPE P DECIMALS 3 VALUE '123.657'. c_city TYPE C LENGTH 10 VALUE 'BERLIN'
+      - Text Symbols - TEXT-XXX, where XXX is the text ID  for the text symbol maintained in the text pool - WRITE text-001. WRITE 'THIS is an English text'(002). - SE11 -> syst
+      - Predefined data objects - ABAP dictionary - SYST
 ![alt text](images/ABAP%20Dictionary%20Structure%20SYST.png)
----
->>>>>>> Variables - data objects - allows to store data locally for the program in memory
----
->>>>>>>> DATA keyword - declare data - DATA: count type I, count2 TYPE I value 10. - DATA: itab TYPE STANDARD TABLE OF mara. SELECT matnr bismt FROM mara INTO CORRESPONDING FIELDS OF TABLE itab WHERE mtart EQ 'FERT'. LOOP AT itab INTO DATA(wa). WRITE:/ wa-matnr, wa-bismt. ENDLOOP. READ TABLE itab WITH KEY matnr = '1400-500' INTO DATA(wa2). - DATA: itab TYPE STANDARD TABLE OF mara. LOOP AT itab ASSIGNING FIELD-SYMBOL(<line>). WRITE:/ <line>-matnr, <line>-bismt. ENDLOOP. READ TABLE itab WITH KEY matnr ='ABC' ASSIGNING FIELD-SYMBOL(<line2>). - oref->meth( IMPORTING p1 = DATA(a1)IMPORTING p2 = DATA(a2)... ).
----
->>>>>>>> STATICS - declare the data with the static validity within the procedure - { REPORT DEMO_STATIC_DATA_OBJECT. DO 5 TIMES. PERFORM dataobject_example. ENDDO. FORM dataobject_example. DATA count1 TYPE I. STATICS count2 TYPE I. count1 = count1 + 1. count2 = count2 + 1. WRITE: / 'Count1: ', count1, 'Count2: ', count2. ENDFORM. : Count1: 1 Count2: 1 Count1: 1 Count2: 2 Count1: 1 Count2: 3 Count1: 1 Count2: 4 Coun>>t1: 1 Count2: 5}
->>>>>>>> The *variable count1 does not retain the value* because it is declared with the *DATA* keyword, whereas the variable count2, declared with the *STATICS* keyword, *retains the value for the runtime of the program*.
----
->>>>>>>> CLASS-DATA: declare a static attribute for the class - is valid for all instances  of the class within the program
----
->>>>>>>> PARAMETERS: declare an elementary data object - displayed as input field on the selection screen
----
->>>>>>>> SELECT-OPTIONS: declare an internal table - displayed as input field on selection screen 
+      - Variables - data objects - allows to store data locally for the program in memory
+      - DATA keyword - declare data 
+      ```
+      DATA: count type I, count2 TYPE I value 10.
+      DATA: itab TYPE STANDARD TABLE OF mara. 
+      SELECT matnr bismt FROM mara INTO CORRESPONDING FIELDS OF TABLE itab WHERE mtart EQ 'FERT'. 
+      LOOP AT itab INTO DATA(wa). 
+      WRITE:/ wa-matnr, wa-bismt. 
+      ENDLOOP. 
+      READ TABLE itab WITH KEY matnr = '1400-500' INTO DATA(wa2). 
+      DATA: itab TYPE STANDARD TABLE OF mara. 
+      LOOP AT itab ASSIGNING FIELD-SYMBOL(<line>). 
+      WRITE:/ <line>-matnr, <line>-bismt. 
+      ENDLOOP. 
+      READ TABLE itab WITH KEY matnr ='ABC' ASSIGNING FIELD-SYMBOL(<line2>). 
+      oref->meth( IMPORTING p1 = DATA(a1)IMPORTING p2 = DATA(a2)... ).
+      ```
+      - STATICS - declare the data with the static validity within the procedure 
+      ```
+      REPORT DEMO_STATIC_DATA_OBJECT. 
+      DO 5 TIMES. 
+      PERFORM dataobject_example. 
+      ENDDO. 
+      FORM dataobject_example. 
+      DATA count1 TYPE I. 
+      STATICS count2 TYPE I. 
+      count1 = count1 + 1. 
+      count2 = count2 + 1. 
+      WRITE: / 'Count1: ', count1, 'Count2: ', count2. 
+      ENDFORM.
+      --OUTPUT--
+      Count1: 1 Count2: 1 
+      Count1: 1 Count2: 2 
+      Count1: 1 Count2: 3 
+      Count1: 1 Count2: 4 
+      Count1: 1 Count2: 5
+      ```
+      - The *variable count1 does not retain the value* because it is declared with the *DATA* keyword, whereas the variable count2, declared with the *STATICS* keyword, *retains the value for the runtime of the program*.
+   - CLASS-DATA: declare a static attribute for the class - is valid for all instances  of the class within the program
+   - PARAMETERS: declare an elementary data object - displayed as input field on the selection screen
+   - SELECT-OPTIONS: declare an internal table - displayed as input field on selection screen 
 ## ABAP Data types - predefined data types provided by the ABAP runtime environment
->>> Four character types - Numeric types (N), character text(C), data type(D), time type(T) - each character occupies 2 to 4 bytes
->>> Three numeric types - Integer (I), Floating point numbers(F), packed number(P) - used to display and calculate numbers
->>> Integer type - whole number - DATA: num1 TYPE I value 5. num2 TYPE I VALUE 2. Result TYPE I. Result = num1 / num2.
->>> STRING - variable-length character string 
->>> XSTRING - variable-length hexadecimal byte sequence ::: {TYPES: , DATA: }
+1. Four character types 
+   - Numeric types (N) 
+   - Character text(C)
+   - Data type(D)
+   - Time type(T) - each character occupies 2 to 4 bytes
+2. Three numeric types 
+   - Integer (I)
+   - Floating point numbers(F)
+   - packed number(P) - used to display and calculate numbers
+3. Integer type - whole number
+   ```
+   DATA: num1 TYPE I value 5. 
+         num2 TYPE I VALUE 2. 
+         Result TYPE I. 
+   Result = num1 / num2.
+   ```
+4. STRING - variable-length character string 
+5. XSTRING - variable-length hexadecimal byte sequence ::: {TYPES: , DATA: }
 ## Local Data types - present inside ABAP program and are visible to the program only 
->> TYPES: <type_name> ... [TYPE <ABAP-Type> |   LIKE <obj>].
->> TYPES: BEGIN OF Address_ty. firstname TYPE C LENGTH 20 lastname TYPE C LENGTH 20. street  TYPE C LENGTH 20. city TYPE C LENGTH 20. END OF address_ty.
->> DATA: addrs TYPE address_ty. addrs-firstname = 'Bob', addrs-lastname = 'Johnson' addrs-street = '123 Adam Lane'. WRITE: addrs-firstname, addrs-lastname, addrs-street.
->> TYPES: BEGIN OF stru1, fld1 TYPE I, BEGIN OF stru2, fld2 TYPE C, fld3 TYPE I, END OF stru2, END of stru1
->> TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
+```
+TYPES: <type_name> ... [TYPE <ABAP-Type> |   LIKE <obj>].
+TYPES: BEGIN OF Address_ty. 
+         firstname TYPE C LENGTH 20 lastname TYPE C LENGTH 20. 
+         street  TYPE C LENGTH 20. 
+         city TYPE C LENGTH 20. 
+       END OF address_ty.
+DATA: addrs TYPE address_ty. 
+      addrs-firstname = 'Bob', 
+      addrs-lastname = 'Johnson', 
+      addrs-street = '123 Adam Lane'. 
+WRITE: addrs-firstname,
+       addrs-lastname, 
+       addrs-street.
+TYPES: BEGIN OF stru1, 
+         fld1 TYPE I, 
+         BEGIN OF stru2, 
+            fld2 TYPE C, 
+            fld3 TYPE I, 
+         END OF stru2, 
+       END of stru1
+TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
+```
 ## Global data types - a available system- wide
->> To define a data object that refers to a data type defined in the type group SLIS, you have to declare the type group in the ABAP program with the syntax TYPE-POOLS: SLIS and then define the data object with reference to the data type defined in the type group.
->>> TYPE-POOLS: SLIS.
->>> DATA: fieldcat TYPE slis_t_fieldcat_alv.
-## Data Object Visibility - visibility of the data object is dependent on the context of the variable
->>> Variable defined with DATA statement - subroutine between FORM and ENDFORM, it is local data object for the subroutine - data is not visible and is not accessible outside the subroutine
->>> If data is inside function module, then it is a local data object for the function module.
->>> Data-objects at start of the program - with DATA, PARAMETERS or SELECT-OPTIONS - visible to entire program and are global data objects
->>> Data object is declared between MODULE and ENDMODULE of PAI or PBO module for the screen
->>> Data objects are defined with TABLES - visible to entire program 
+1. To define a data object that refers to a data type defined in the type group SLIS, you have to declare the type group in the ABAP program with the syntax TYPE-POOLS: SLIS and then define the data object with reference to the data type defined in the type group.
+   - TYPE-POOLS: SLIS.
+   - DATA: fieldcat TYPE slis_t_fieldcat_alv.
+## Data Object Visibility
+   - Visibility of the data object is dependent on the context of the variable
+   - Variable defined with DATA statement - subroutine between FORM and ENDFORM, it is local data object for the subroutine - data is not visible and is not accessible outside the subroutine
+   - If data is inside function module, then it is a local data object for the function module.
+   - Data-objects at start of the program - with DATA, PARAMETERS or SELECT-OPTIONS - visible to entire program and are global data objects
+   - Data object is declared between MODULE and ENDMODULE of PAI or PBO module for the screen
+   - Data objects are defined with TABLES - visible to entire program 
 ### Internal Table Definition and Use
-> Internal tables - program variables and store multiple identical structured data records in the ABAP runtime memory - process large data sets in a structured manner 
-> Data types - Line Type and Table Key
-> Types of tables - Standard tables, Sorted tables, Hashed tables, Indexed, Not specified
-> Table key is pimary key - primary_key
-> Components of primary key declared using - UNIQUE, NON-UNIQUE KEY, specified
-> Move-corresponding statements is used to move the identical rows from internal table from itab1 to itab2  
-> COLLECT keyword is used to populate an internal table 
+1. Internal tables - program variables and store multiple identical structured data records in the ABAP runtime memory - process large data sets in a structured manner 
+2. Data types - Line Type and Table Key
+3. Types of tables - Standard tables, Sorted tables, Hashed tables, Indexed, Not specified
+4. Table key is pimary key - primary_key
+5. Components of primary key declared using - UNIQUE, NON-UNIQUE KEY, specified
+6. Move-corresponding statements is used to move the identical rows from internal table from itab1 to itab2  
+7. COLLECT keyword is used to populate an internal table 
 ### SQL Statements Including Update Strategies
-> Data Modelling - implement appropriate table definitions, including their relationships with each other in ABAP Dicitionary
-> Data Retrieval - SAP provides openSQL - openSQL statements are dynamically converted to corresponding native sql - independent of database
->> Types of reuse components encapsulate databse access: Logical databases, Function modules, BAPIs, Method of global classes
+1. Data Modelling - implement appropriate table definitions, including their relationships with each other in ABAP Dicitionary
+2. Data Retrieval - SAP provides openSQL - openSQL statements are dynamically converted to corresponding native sql - independent of database
+   - Types of reuse components encapsulate databse access: 
+      - Logical databases
+      - Function modules
+      - BAPIs
+      - Method of global classes
 ![alt text](images/SAP%20LUW%20within%20a%20Database%20LUW.png)
 ![alt text](images/Locking%20Data%20through%20Database%20LUWs.png)
-> Lock modes
->> E - Extensible - lock for data change - accumulative
->> X - Exclusive - lock for data change - exclusive
->> S - Shared - locked for protective data display - shared lock
+3. Lock modes
+   - E - Extensible - lock for data change - accumulative
+   - X - Exclusive - lock for data change - exclusive
+   - S - Shared - locked for protective data display - shared lock
 ![alt text](images/Process%20Flow%20of%20an%20Update.png)
 ### Basic ABAP Programs and Interface Creation
 ![alt text](images/Project%20Timeline%20of%20a%20Change%20Request.png)
@@ -224,17 +280,17 @@ valid operations of the data objects
 - Interface pools (INTERFACE-POOL)
 - Subroutine pools (PROGRAM)
 - Type groups (TYPE-POOL)
-> ABAP Event Blocks
->> LOAD-OF-PROGRAM - triggered when the program is initially loaded into memory
->> INITIALIZATION - triggered by the actual start of the program
->> START-OF-SELECTION - triggered when program has completed all selection screen events
->> GET node - event block whose result is triggered by the ABAP runtime environment
->> END-OF-SELECTION - data read by the logical database can be processed
->> AT SELECTION-SCREEN - defines event blocks  that is triggered by the ABAP runtime environment during selection screen processing 
->> TOP-OF-PAGE - triggered by ABAP runtime environment during the creation of a list
->> END-OF-PAGE - triggered by ABAP runtime environment during the creation of a basic list
->> AT LINE-SELECTION - display of screen list event is triggered by ABAP runtime environment
->> AT USER-COMMAND - display of a screen list event is triggered by the ABAP runtime environment
+4. ABAP Event Blocks
+   - LOAD-OF-PROGRAM - triggered when the program is initially loaded into memory
+   - INITIALIZATION - triggered by the actual start of the program
+   - START-OF-SELECTION - triggered when program has completed all selection screen events
+   - GET node - event block whose result is triggered by the ABAP runtime environment
+   - END-OF-SELECTION - data read by the logical database can be processed
+   - AT SELECTION-SCREEN - defines event blocks  that is triggered by the ABAP runtime environment during selection screen processing 
+   - TOP-OF-PAGE - triggered by ABAP runtime environment during the creation of a list
+   - END-OF-PAGE - triggered by ABAP runtime environment during the creation of a basic list
+   - AT LINE-SELECTION - display of screen list event is triggered by ABAP runtime environment
+   - AT USER-COMMAND - display of a screen list event is triggered by the ABAP runtime environment
 - ABAP syntax is platform-independent
 ![alt text](images/Method%20Parameters.png)
 ![alt text](images/Method%20Exceptions.png)
@@ -244,15 +300,15 @@ valid operations of the data objects
 - Data elements - elementary ABAP Dictionary type - describe a single field or data element
 - Structures - complex data type consists of multiple components
 - Table types -  complete description of internal table
-> Basic and Complex data types
->> Domains - ABAP dictionary object that is used to describe technical attributes of a data element 
->> CONVERSION_EXIT_XXXXX_INPUT - display format of SAP internal format 
->> CONVERSION_EXIT_XXXXX_OUTPUT - converts the SAP internal format to the display format 
->> Structures consists of sequence of components
->> Table type for ABAP Dicitionary
->>> Line type - defines the structure and the data type of the internal table
->>> Access mode - access the data in the internal table
->>> Key - specify the key for the internal table
+1. Basic and Complex data types
+   - Domains - ABAP dictionary object that is used to describe technical attributes of a data element 
+   - CONVERSION_EXIT_XXXXX_INPUT - display format of SAP internal format 
+   - CONVERSION_EXIT_XXXXX_OUTPUT - converts the SAP internal format to the display format 
+   - Structures consists of sequence of components
+   - Table type for ABAP Dicitionary
+      - Line type - defines the structure and the data type of the internal table
+      - Access mode - access the data in the internal table
+      - Key - specify the key for the internal table
 ### Unicode
 ### Classical Screens
 ![alt text](images/Context%20Menu%20to%20Create%20Program%20Objects.png)
@@ -270,6 +326,29 @@ valid operations of the data objects
 ### Table Relationships
 ### The Authors
 ### Index
+*------ Transaction Codes ------*
+- PA30 - Maintain HR Master Data
+- SE38 - ABAP Editor: Initial Screen - Create Program
+- SE16 - Data Browser: Initial Screen - Table Name
+- SE11 - ABAP Dictionary: Initial Screen 
+   - Create database
+   - view
+   - data type
+   - type group
+   - domain
+   - search help
+   - lock object
+- SE24 - Class Builder: Initial Screen - Object type
+- SE80 - Object Navigator
+- SU53 - Display Authorization Data for User ??????
+- SE24 - Class Builder - Intitial Screen
+*------ SYSTEM VARIABLES ------*
+- SY-DATUM -  current date
+- SY-UZEIT - Current time
+- SY-UNAME - User ID of current user
+- SY-SUBRC - it is a return value and it seems that it will contain value as per the preceding line of code executed, 0 for success
+- SY-TABIX - find the current line in the internal table 
+- SY-INDEX - gives the number of loop passes - E.G. in DO loop
 ```
 *&---------------------------------------------------------------------*
 *& Report  ZSHEKHAR01
