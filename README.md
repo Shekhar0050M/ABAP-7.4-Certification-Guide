@@ -355,7 +355,7 @@ REPORT ZSHEKHAR01.
 ```
 WRITE: 12345.
 ```
-![alt text](images/queries/Query%20#1.png)
+![alt text](images/queries/Query_1.png)
 ```
 WRITE: 'A text literal'.
 ```
