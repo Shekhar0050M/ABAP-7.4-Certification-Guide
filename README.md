@@ -353,8 +353,9 @@ TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
 REPORT ZSHEKHAR01.
 ```
 ```
-WRITE:12345.
+WRITE: 12345.
 ```
+![alt text](images/queries/Query%20#1.png)
 ```
 WRITE: 'A text literal'.
 ```
