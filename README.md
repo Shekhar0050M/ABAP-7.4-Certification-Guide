@@ -342,6 +342,7 @@ TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
 - SE80 - Object Navigator
 - SU53 - Display Authorization Data for User ??????
 - SE24 - Class Builder - Intitial Screen
+- SE32 - ABAP Text Elements - Change text symbols language english
 *------ SYSTEM VARIABLES ------*
 - SY-DATUM -  current date
 - SY-UZEIT - Current time
@@ -349,6 +350,7 @@ TYPES: <Table_type> TYPE <tablekind> OF <linetype> [WITH <key>].
 - SY-SUBRC - it is a return value and it seems that it will contain value as per the preceding line of code executed, 0 for success
 - SY-TABIX - find the current line in the internal table 
 - SY-INDEX - gives the number of loop passes - E.G. in DO loop
+- SY-MSGID -  is a system field in ABAP that holds the message ID of the last message that was generated during program execution.
 ```
 REPORT ZSHEKHAR01.
 ```
@@ -359,21 +361,26 @@ WRITE: 12345.
 ```
 WRITE: 'A text literal'.
 ```
+![alt text](images/queries/Query_2.png)
 ```
 WRITE: `A STRING literal`.
 ```
+![alt text](images/queries/Query_3.png)
 ```
 CONSTANTS: c_nump TYPE P DECIMALS 3 VALUE '123.657',
            c_city TYPE C LENGTH 10 VALUE 'BERLIN'.
 ```
+![alt text](images/queries/Query_4.png)
 ```
 WRITE text-001.
 WRITE 'THIS is an English text'(002).
 ```
+![alt text](images/queries/Query_5.png)
 ```
 DATA: count TYPE I,
       count2 TYPE I VALUE 10.
 ```
+![alt text](images/queries/Query_6.png)
 ```
 "Declaration of field symbols
 DATA: itab TYPE STANDARD TABLE OF mara.
@@ -388,6 +395,7 @@ ENDLOOP.
 
 READ TABLE itab WITH KEY matnr = '1400-500' INTO  DATA(wa2).
 ```
+![alt text](images/queries/Query_7.png)
 ```
 "Declaration of actual parameters
 DATA: itab TYPE STANDARD TABLE OF mara.
@@ -402,9 +410,26 @@ READ TABLE itab WITH KEY matnr = 'ABC'
 
 ```
 "Declaration of Table Work Area
-oref->meth( IMPORTING p1 = DATA(a1)
-      IMPORTING p2 = DATA(a2)
-...).
+"oref->meth( IMPORTING p1 = DATA(a1)
+"      IMPORTING p2 = DATA(a2)
+"...).
+"Work area is a record temporarily used for storing table. It has similar structure than table.
+
+DATA: it_mara TYPE TABLE OF mara,
+      wa_mara TYPE mara,
+      wa_mara1 LIKE LINE OF it_mara,
+      it_mara1 LIKE TABLE OF wa_mara1,
+      it_mara2 LIKE it_mara1,
+      wa_mara2 LIKE wa_mara1.
+
+TYPES: BEGIN OF ty_data,
+          matnr TYPE mara-matnr,
+          mtart TYPE mara-mtart,
+          matkl TYPE mara-matkl,
+       END OF ty_data.
+
+DATA: it_data3 TYPE TABLE OF ty_data,
+       wa_data3 TYPE ty_data.
 ```
 ```
 "STATISTICS keyword
@@ -419,6 +444,7 @@ count2 = count2 + 1.
 WRITE:/ 'Count1: ', count1, 'Count2: ', count2.
 ENDFORM.
 ```
+![alt text](images/queries/Query_8.png)
 ```
 "Usage of Data Keyword
 DATA: var1 TYPE I.
@@ -429,17 +455,21 @@ DATA: num1 TYPE I VALUE 5,
       RESULT TYPE I.
       RESULT = num1 / num2.
 DATA: pack_num1 TYPE P LENGTH 8 DECIMALS 2,
-      pack_num2 TYPE P LENGTH 8 DECIMALS 2 VALUE '2.55'.
+      pack_num2 TYPE P LENGTH 8 DEIMALS 2 VALUE '2.55'.
 DATA: dec_num1 TYPE decfloat16,
       dec_num2 TYPE decfloat34.
 DATA: hex(1) TYPE X VALUE '09'.
+
+WRITE:/ var1, var2, var3, num1, num2, RESULT, pack_num1, pack_num2, dec_num1, dec_num2, hex(1).
 ```
+![alt text](images/queries/Query_9.png)
 ```
 "Syntax to declare incompete data types
 DATA var1 TYPE C.         "character variable of length 1
 DATA: var2(3) TYPE C.         "character variable of length 3
 DATA: var3 TYPE C LENGTH 3.         "character variable of length 3
 ```
+
 ```
 "Syntax for data types and data objects
 TYPES: v_char1(2) TYPE C.
@@ -462,15 +492,15 @@ TYPES: BEGIN OF address_ty,
              street TYPE C LENGTH 30,
              city TYPE C LENGTH 20,
        END OF address_ty.
-```
-```
+
 "Access individual components of the structure data  type in the program
-DATA: addrs TYPE address_ty,
-      addrs-firstname = 'Bob',
-      addrs-lastname = 'Johnson',
+DATA: addrs TYPE address_ty.
+      addrs-firstname = 'Bob'.
+      addrs-lastname = 'Johnson'.
       addrs-street = '123 Adam Lane'.
 WRITE: addrs-firstname, addrs-lastname, addrs-street.
 ```
+![alt text](images/queries/Query_11.png)
 ```
 "Define a nested structure type locally in an ABAP program
 TYPES: BEGIN OF stru1,
@@ -513,10 +543,10 @@ TYPES: itab TYPE SORTED TABLE OF flightinfo
 "Syntax for MESH Declaration
 TYPES:
       BEGIN OF line1,
-        col1 TYPE I,
+         col1 TYPE I,
       END OF line1,
       t_itab1 TYPE SORTED TABLE OF line1
-                   WITH NON-UNIQUE KEY col1,
+            WITH NON-UNIQUE KEY col1,
       BEGIN OF line2,
         col1 TYPE I,
         col2 TYPE I,
@@ -551,13 +581,14 @@ DATA: itab_lt TYPE STANDARD TABLE OF mat_type.
 ```
 ```
 "Line type Definition with reference to ABAP Dictionary Structure
-TYPES: BEGIN OF mat_ty.
-          INCLUDE STRUCTURE mara.
-TYPES: END OF mat_ty.
+TYPES: BEGIN OF mat_ty,
+          INCLUDE STRUCTURE mara,
+       END OF mat_ty.
+"Use of TYPE instead of STRUCTURE is recommended. 
 ```
 ```
 "Internal Table Definition with reference to ABAP Dictionary Table
-DATA: itab_lt_01 TYPE STANDARD TABLE OF mara
+DATA: itab_lt TYPE STANDARD TABLE OF mara
               WITH NON-UNIQUE KEY matnr.
 
 DATA: itab_wa LIKE LINE OF itab_lt.
@@ -576,6 +607,11 @@ TYPES: itab01 TYPE SORTED TABLE OF line_type
               WITH UNIQUE KEY material plant.
 TYPES: itab02 TYPE HASHED TABLE OF line_type
               WITH UNIQUE KEY material plant.
+"To describe table
+DATA: itab01_lines TYPE SY-TABIX. 
+DESCRIBE TABLE tab LINES itab01_lines.
+WRITE:/ itab01_lines.
+
 ```
 ```
 "Sorted Internal Table Data Objects
@@ -601,6 +637,7 @@ DATA: itab03 TYPE HASHED TABLE OF marc
 ```
 ```
 "Definition of Internal table with header line
+"OCCURS defines the number of occurences of a field within a structure or table, e.g. OCCURS 1, OCCURS 2, OCCURS 3, OCCURS 5, etc
 DATA: BEGIN OF itab_lt_001 OCCURS 0,
         material LIKE mard-matnr,
         plant LIKE mard-werks,
@@ -617,6 +654,7 @@ DATA: BEGIN OF itab_lt_001 OCCURS 0,
 ```
 ```
 "Definition of Internal table with header line
+"No header line requires work area and is preferrable
 TYPES: BEGIN OF itab_ty,
          matnr TYPE matnr,
          werks TYPE werks,
@@ -624,12 +662,13 @@ TYPES: BEGIN OF itab_ty,
          labst TYPE labst,
        END OF itab_ty.
 DATA: itab_lt_0001 TYPE itab_ty OCCURS 0 WITH HEADER LINE.
+
 ```
 ```
 "Syntax to populate an internal table with a select clause
 DATA: itab_wa TYPE mara.
- DATA: mara_lt TYPE STANDARD TABLE OF mara.
- SELECT * FROM mara INTO TABLE mara_lt.
+DATA: mara_lt TYPE STANDARD TABLE OF mara.
+SELECT * FROM mara INTO TABLE mara_lt.
 "Syntax to append
 APPEND itab_wa to itab_lt
 APPEND lines OF itab1 TO itab2.
@@ -664,6 +703,7 @@ END-OF-SELECTION.
 INSERT LINES OF itab1 FROM <idx1> TO <idx2> INTO TABLE itab2.
 ```
 ```
+"Move rows that are common in itab1 and itab2, overwrite itab2 row with itab1 column
 MOVE-CORRESPONDING itab1 TO itab2.
 ```
 ```
@@ -742,6 +782,7 @@ LOOP AT itab_001 into itab_wa_01.
 WRITE: / itab_wa_01-matnr, itab_wa_01-qty1.
 ENDLOOP.
 ```
+![alt text](images/queries/Query_12.png)
 ```
 "Syntax to read Internal table lines
 DATA: itab_wa TYPE marc,
